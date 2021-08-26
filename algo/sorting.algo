@@ -1,0 +1,14 @@
+PROCEDURE sorting(VAR tab : ARRAY_OF INTEGER)
+VAR
+ a,i,j,n : INTEGER;
+BEGIN
+FOR i FROM 2 TO n STEP 1  DO
+    a := tab[i];
+    j := i;
+WHILE (j>1 and (tab[j-1]>a)) DO
+    tab[j] := tab[j-1];
+    j := j-1;
+END_WHILE
+    tab[j] := a;
+END_FOR
+END

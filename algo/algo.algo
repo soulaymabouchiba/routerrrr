@@ -1,0 +1,27 @@
+ALGORITHM algo_EL
+VAR
+    c : CHAR;
+    i : INTEGER :=0;
+    s : INTEGER :=1;
+    vow : ['A','E','I','O','U'];
+    k : INTEGER :=0;
+BEGIN
+    REPEAT
+        read (c);
+ IF (c = " ") THEN
+        s := s+1; 
+ END_IF
+
+
+ IF (c.ToUpper in vow) THEN
+    k := k+1;
+ END_IF
+
+    i := i+1;
+
+    UNTIL (c = ".")
+
+    writeln("The length of the sentence=", i);
+    writeln("The number of words in the sentence=", s);
+    writeln("The number of vowels in the sentence=", k);
+END 

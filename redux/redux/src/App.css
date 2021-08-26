@@ -1,0 +1,14 @@
+.App {
+  margin-top: 20px;
+  margin-right: 30%;
+  margin-left: 30%;
+  border-style: solid;
+  background-color: rgb(176, 177, 175);
+  text-align: center;
+  border-radius: 30px;
+}
+
+.EditButton {
+  color: white;
+  background-color:blue;
+}

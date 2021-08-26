@@ -1,0 +1,87 @@
+PROCEDURE Dot_product(M,N: INTEGER, mat: ARRAY_OF FLOAT[..,..])
+VAR
+    i,j:INTEGER;
+BEGIN   
+    Writeln("reading vectors:");
+    FOR i FROM 0 TO N-1 DO
+        Writeln("reading vector ",i);
+        FOR j FROM 0 TO M-1 DO
+            read(mat[i][j]);
+        END_FOR
+    END_FOR
+END
+
+
+PROCEDURE dot_product1(v1, v2: ARRAY_OF FLOAT, VAR ps:FLOAT)
+VAR
+    i : INTEGER;
+BEGIN
+
+    ps := 0;
+    FOR i FROM 0 TO v1.length-1  DO
+       ps := ps + v1[i]*v2[i];
+    END_FOR   
+END
+
+FUNCTION dot_product2(v1, v2: ARRAY_OF FLOAT) : FLOAT
+VAR
+    i,R : INTEGER; 
+BEGIN
+    R := 0;
+    FOR i FROM 0 TO v2.length-1 DO
+        R := R+ v1[i]*v2[i];
+    END_FOR
+
+    RETURN R;
+END
+PROCEDURE show_vector(v:ARRAY_OF INTEGER )
+VAR
+    i:INTEGER;
+BEGIN
+    Write("{",v[0]);
+    FOR i FROM 1 TO v.length-1 DO
+         Write(",", v[i]);
+    END_FOR
+    Writeln("}");
+
+END
+ALGORITHM Dotproduct
+VAR
+  mat:ARRAY_OF FLOAT[100,10];
+  i,N : INTEGER;
+  M :INTEGER :=10;// length of vectors
+  ps:FLOAT;
+BEGIN
+ 
+    write("give the number of pairs");
+    read(N);
+    reading(M,N*2,mat);
+    Writeln(" PART I");
+    FOR i FROM 0 TO N-1 STEP 2 DO
+        Writeln("-----------------");
+        show_vector(mat[i]);
+        show_vector(mat[i+1]);
+        dot_product1(mat[i],mat[i+1],ps);
+        IF (ps=0) THEN
+           Writeln("vectors are orthogonals");
+       ELSE
+           Writeln("vectors are not orthogonals");
+       END_IF ;
+    END_FOR 
+
+     Writeln("PART II ");
+    FOR i FROM 0 TO N-1 STEP 2 DO
+        Writeln("***");
+        show_vector(mat[i]);
+        show_vector(mat[i+1]);
+        ps:= dot_product2(mat[i],mat[i+1]);
+        IF (ps=0) THEN
+           Writeln("vectors are orthogonals");
+       ELSE
+           Writeln("vectors are not orthogonals");
+       END_IF ;
+    END_FOR 
+    
+       
+    
+END
